@@ -1,9 +1,9 @@
 const express = require('express'); 
 const app = express();
 const port = process.env.PORT || 4000; 
-const merchant_model = require('./contragent_model.ts')
+const merchant_model = require('./contragent_model.js')
 
-app.listen(process.env.PORT||port, () => console.log(`Listening on port ${port}`)); 
+app.listen(/*process.env.PORT||*/port, () => console.log(`Listening on port ${port}`)); 
 
 app.use(express.json())
 
