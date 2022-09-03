@@ -59,4 +59,10 @@ app.get('/cleardb', (req,res)=>{
       res.status(500).send(error);
     })})
 
-
+app.get('/check', function(req, res){
+  if(error){
+    console.log(error)
+  } else{
+    res.send("Server works!")
+  }
+})
