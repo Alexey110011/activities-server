@@ -1,11 +1,14 @@
 const Pool = require('pg').Pool
 const pool = new Pool({
-  user: 'rphxzuzwlivfgw',
+  connectionString:process.env.DATABASE_URL,
+  ssl:{
+    rejectUnauthorized:false
+  }/*user: 'rphxzuzwlivfgw',
   host: 'ec2-176-34-215-248.eu-west-1.compute.amazonaws.com',
   database: 'd16ienk7tk13f0',
   password: 'd432f6a543e502d6c17716950246069a17d315e7d12d4e36ea9fdba9d3f0ce6a',
   port: 5432,
-  sslmode: true
+  sslmode: true*/
   });
 
 const getContragents = () => {
