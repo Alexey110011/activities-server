@@ -3,13 +3,8 @@ const pool = new Pool({
   connectionString:process.env.DATABASE_URL,
   ssl:{
     rejectUnauthorized:false
-  }/*user: 'rphxzuzwlivfgw',
-  host: 'ec2-176-34-215-248.eu-west-1.compute.amazonaws.com',
-  database: 'd16ienk7tk13f0',
-  password: 'd432f6a543e502d6c17716950246069a17d315e7d12d4e36ea9fdba9d3f0ce6a',
-  port: 5432,
-  sslmode: true*/
-  });
+  }
+});
 
 const getContragents = () => {
 
@@ -26,7 +21,7 @@ const getContragents = () => {
 const createContragent = (body) => {
   return new Promise(function (resolve, reject) {
     const { _id, fullname, date, type, amount, email, phone, address, question } = body
-    pool.query('INSERT INTO contragents (_id, fullname, date, type, amount, email, phone,address, question) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *', [_id, fullname, date, type, amount, email, phone, address, question], (error, results) => {
+    pool.query('INSERT INTO contragents ( _id, fullname, date, type, amount, email, phone,address, question) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *', [_id, fullname, date, type, amount, email, phone, address, question], (error, results) => {
       if (error) {
         reject(error)
       }
