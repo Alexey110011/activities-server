@@ -45,10 +45,10 @@ app.get('/cleardb', (req,res)=>{
     merchant_model.createContragent(req.body)
     .then(response => {
       res.status(200).send(response);
-      console.log(req.body,response)
-    })
+      })
     .catch(error => {
       res.status(500).send(error);
+      console.log(req.body)
     })})
 
   app.put('/merchants/update', (req, res) => {
