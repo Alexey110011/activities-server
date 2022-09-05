@@ -7,7 +7,9 @@ const merchant_model = require('./contragent_model.js')
 app.listen(process.env.PORT||port, () => console.log(`Listening on port ${port}`)); 
 
 app.use(express.json())
-app.use(cors())
+app.use(cors(
+  {origin:'*'}
+))
 app.all('/'/*use(*/,function (req, res, next) {
   res.header/*setHeader*/('Access-Control-Allow-Origin', '*');
   res.header/*setHeader*/('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
