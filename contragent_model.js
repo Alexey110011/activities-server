@@ -21,11 +21,11 @@ const getContragents = () => {
 const createContragent = (body) => {
   return new Promise(function (resolve, reject) {
     const { _id, fullname, date, type, amount, email, phone, address, question } = body
-    pool.query('INSERT INTO contragents (_id, fullname, date, type, amount, email, phone,address, question) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *', [_id, fullname, date, type, amount, email, phone, address, question], (error, results) => {
+    pool.query('INSERT INTO contragents (_id, fullname, date, type, amount, email, phone, address, question) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *', [_id, fullname, date, type, amount, email, phone, address, question], (error, results) => {
       if (error) {
         reject(error)
       }
-      resolve(`A new merchant has been added added: ${results}`)
+      resolve(`A new merchant has been added: ${results.rows}`)
     })
   })
 }
