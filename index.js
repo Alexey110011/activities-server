@@ -4,7 +4,7 @@ const app = express();
 const port = process.env.PORT || 4000; 
 const merchant_model = require('./contragent_model.js')
 
-app.listen(process.env.PORT||port, () => console.log(`Listening on port ${port}`)); 
+
 
 app.use(express.json())
 app.use(cors(
@@ -71,3 +71,4 @@ app.get('/check', function(req, res){
     res.send("Server works!")
   }
 })
+app.listen(process.env.PORT||port, () => console.log(`Listening on port ${port}`)); 
