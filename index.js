@@ -7,16 +7,16 @@ const merchant_model = require('./contragent_model.js')
 
 
 app.use(express.json())
-app.use(cors(
+/*app.use(cors(
   {origin:'*'/*}*/,
   methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
   headers: ['Content-Type','Access-Control-Allow-Headers']}
-))
-/*app.all('/',function (req, res, next) {
+))*/
+app.all('/',function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type', 'Access-Control-Allow-Headers');
-  next();});*/
+  next();});
 
 app.get('/m', (req, res) => {
   merchant_model.getContragents()
