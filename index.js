@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(cors(
   {origin:'*'/*}*/,
   methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
-  headers: 'Content-Typ'}
+  headers: 'Content-Type'}
 ))
 /*app.all('/',function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
