@@ -10,10 +10,10 @@ app.use(express.json())
 app.use(cors(
   {origin:'*'}
 ))
-app./*all('/'/*/use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type', 'Access-Control-Allow-Headers');
+app.all(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type', 'Access-Control-Allow-Headers');
   next();});
 
 app.get('/m', (req, res) => {
@@ -45,8 +45,9 @@ app.get('/cleardb', (req,res)=>{
       })})
       
   app.post('/contragents', (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*')
     merchant_model.createContragent(req.body)
-    .then(response => {
+      .then(response => {
       res.status(200).send(response);
       })
     .catch(error => {
