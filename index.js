@@ -8,7 +8,7 @@ const merchant_model = require('./contragent_model.js')
 
 app.use(express.json())
 /*app.use(cors(
-  {origin:'*'/*}*/,
+  {origin:'*'/*},
   methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
   headers: ['Content-Type','Access-Control-Allow-Headers']}
 ))*/
