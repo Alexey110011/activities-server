@@ -25,7 +25,7 @@ const createContragent = (body) => {
       if (error) {
         reject(error)
       }
-      resolve(`A new merchant has been added: ${results.rows}`)
+      resolve(`A new merchant has been added: ${results/*.rows*/}`)
     })
   })
 }
