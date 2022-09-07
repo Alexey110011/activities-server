@@ -12,10 +12,10 @@ app.use(express.json())
   methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
   headers: ['Content-Type','Access-Control-Allow-Headers']}
 ))*/
-app.all('/',function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'https://sparkling-malasada-6c08c8.netlify.app');
-  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type', 'Access-Control-Allow-Headers');
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'https://sparkling-malasada-6c08c8.netlify.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type', 'Access-Control-Allow-Headers');
   next();});
 
 app.get('/m', (req, res) => {
