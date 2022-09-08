@@ -54,7 +54,7 @@ app.get('/cleardb', (req,res)=>{
       })
     .catch(error => {
       res.status(500).send(error);
-      console.log(req.body)
+      console.log(error)
     })})
 
   app.put('/merchants/update', (req, res) => {
