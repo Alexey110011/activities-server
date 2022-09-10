@@ -22,7 +22,7 @@ const createContragent = (body) => {
   return new Promise(function (resolve, reject) {
     const { _id, fullname, date, type, amount, email, phone, address, question } = body
     console.log(body)
-    pool.query('INSERT INTO contragents (_id, fullname, date, type, amount, email, phone, address, question) VALUES ($1,$2, $3, $4, $5, $6, $7, $8, $9) RETURNING *', [1, 2, 3, 4, 5, 6, 7, 8, 9/*_id, fullname, date, type, amount, email, phone, address, question*/], (error, results) => {
+    pool.query('INSERT INTO contragents (_id, fullname, date, type, amount, email, phone, address, question) VALUES(cvbnm, aa mm, 2022-12-10, income, 100, dd@rr.yy, 1234, adsfdg, ff) RETURNUNG *'/*123,  ) ($1,$2, $3, $4, $5, $6, $7, $8, $9) RETURNING *', [1, 2, 3, 4, 5, 6, 7, 8, 9/*_id, fullname, date, type, amount, email, phone, address, question]*/, (error, results) => {
       if (error) {
         reject(error)
       }
