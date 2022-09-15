@@ -11,7 +11,7 @@ app.use (bodyParser.urlencoded({extended:false}))
 app.use( bodyParser.json())
 
 app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*'/*'https://sparkling-malasada-6c08c8.netlify.app'*/);
+  res.setHeader('Access-Control-Allow-Origin', 'https://sparkling-malasada-6c08c8.netlify.app');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type', 'Access-Control-Allow-Headers');
   next();});
@@ -45,8 +45,7 @@ app.get('/cleardb', (req,res)=>{
       })})
       
   app.post('/contragents', (req, res) => {
-    /*res.set('Access-Control-Allow-Origin', '*')*/
-    merchant_model.createContragent(req.body)
+      merchant_model.createContragent(req.body)
       .then(response => {
       res.status(200).send(response);
       console.log(req.body)
