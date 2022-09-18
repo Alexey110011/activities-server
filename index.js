@@ -53,7 +53,15 @@ app.get('/cleardb', (req,res)=>{
     .catch(error => {
       res.status(500).send(error);
       console.log(error)
-    })})
+    });
+    
+    merchant_model.getContragents()
+    .then(response => {
+      res.status(200).send(response);
+    })
+    .catch(error => {
+      res.status(500).send(error);
+    })/*})*/})
 
   app.put('/merchants/update', (req, res) => {
     merchant_model.updateContragent(req.body)
@@ -64,11 +72,11 @@ app.get('/cleardb', (req,res)=>{
       res.status(500).send(error);
     })})
 
-app.get('/check', function(req, res){
+/*app.get('/check', function(req, res){
   if(error){
     console.log(error)
   } else{
     res.send("Server works!")
   }
-})
+})*/
 app.listen(process.env.PORT||port, () => console.log(`Listening on port ${port}`)); 
