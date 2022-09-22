@@ -97,7 +97,7 @@ const clearDatabase = () => {
       if (error) {
         reject(error)
       }
-      resolve("Cleared"/*ults.rows*/);
+      resolve("Cleared");
     })
   })
 }
