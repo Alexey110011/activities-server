@@ -49,12 +49,12 @@ app.use (bodyParser.urlencoded({extended:false}))
 app.use( bodyParser.json())
 
 app.use(function (req, res, next) {
-  const allowedOrigin = ["https://sparkling-malasada-6c08c8.netlify.app", "https://gentle-semifreddo-803079.netlify.app"]
+  /*const allowedOrigin = ["https://sparkling-malasada-6c08c8.netlify.app", "https://gentle-semifreddo-803079.netlify.app"]
   const origin = req.headers.origin
   if(allowedOrigin.includes(origin)){
     res.setHeader('Access-Control-Allow-Origin', origin)
-  }
-  //res.setHeader('Access-Control-Allow-Origin', 'https://sparkling-malasada-6c08c8.netlify.app');
+  }*/
+  res.setHeader('Access-Control-Allow-Origin', 'https://gentle-semifreddo-803079.netlify.app');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type', 'Access-Control-Allow-Headers');
   next();});
