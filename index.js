@@ -76,7 +76,7 @@ app.use(passport.initialize())
     return reviews.filter(review=>review.bookid==bookId)
   }
 
-  app.get('/', function(req, res){
+  app.get('', function(req, res){
     model.getAllBooks()
     .then(response=>{
       res.status(200);
