@@ -54,7 +54,7 @@ app.use(function (req, res, next) {
   if(allowedOrigin.includes(origin)){
     res.setHeader('Access-Control-Allow-Origin', origin)
   }*/
-  res.setHeader('Access-Control-Allow-Origin', 'https://gentle-semifreddo-803079.netlify.app/9fc4a674-d8d9-46d8-ac8c-570fa672fba5');
+  res.setHeader('Access-Control-Allow-Origin', 'https://gentle-semifreddo-803079.netlify.app/https://gentle-semifreddo-803079.netlify.app/polyfills.a68ecddb00d3b437.js');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type', 'Access-Control-Allow-Headers');
   next();});
