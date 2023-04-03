@@ -9,6 +9,17 @@ require('./passport')
 const authMethods = require('./authentication')
 const passport = require('passport')
 const jwt = require('jsonwebtoken') // Using jsonwebtoken package
+
+require('dotenv').config()
+const Pool = require('pg').Pool
+
+const pool = new Pool({
+    connectionString:process.env.DATABASE_URL,
+  ssl:{
+    rejectUnauthorized:false
+  }
+})
+pool.connect()
 const cors = require('cors')
 app.use(cors())
 /*const {expressjwt:jwt} = require('express-jwt')---Using express-jwt package
