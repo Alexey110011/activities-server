@@ -11,7 +11,7 @@ const pool = new Pool({
 const getAllBooks = ()=>{
     return new Promise(function(resolve, reject){
         pool.query(
-            `SELECT * FROM contragents ORDER BY _id ASC`, (error, results)=>{
+            `SELECT * FROM book ORDER BY authors ASC`, (error, results)=>{
                 if(error) {reject(error)};
                 resolve(results.rows)
             })
