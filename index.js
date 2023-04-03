@@ -9,7 +9,8 @@ require('./passport')
 const authMethods = require('./authentication')
 const passport = require('passport')
 const jwt = require('jsonwebtoken') // Using jsonwebtoken package
-
+const cors = require('cors')
+app.use(cors())
 /*const {expressjwt:jwt} = require('express-jwt')---Using express-jwt package
   let auth = jwt({
   secret:process.env.JWT_SECRET,
