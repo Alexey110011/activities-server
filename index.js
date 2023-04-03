@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express'); 
 const bodyParser = require('body-parser')
 const app = express();
@@ -10,7 +11,7 @@ const authMethods = require('./authentication')
 const passport = require('passport')
 const jwt = require('jsonwebtoken') // Using jsonwebtoken package
 
-require('dotenv').config()
+
 const Pool = require('pg').Pool
 
 const pool = new Pool({
