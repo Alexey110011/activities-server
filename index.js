@@ -88,7 +88,7 @@ app.use( bodyParser.json())
     return reviews.filter(review=>review.bookid==bookId)
   }
 
-  app.get('/book', function(req, res){
+  app.get('/m', function(req, res){
     model.getAllBooks()
     .then(response=>{
       res.status(200);
@@ -191,7 +191,7 @@ app.post('/checkRegExpEmail', (req, res)=>{
     .then(response=>{res.send(response);console.log(response)})
   })
 //************************************************************************************ */
-app.get('/m', (req, res) => {
+app.get('/book', (req, res) => {
   merchant_model.getContragents()
   .then(response => {
     res.status(200).send(response);
