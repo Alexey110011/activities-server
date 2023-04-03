@@ -34,9 +34,9 @@ const addReviewToBook = (req) =>{
     }
 
     const createBook = (body)=>{
-        const {authors, title, description, year, category, pictureUrl, price,shops} = body
+        const {authors, title, description, year, category, pictureUrl, price} = body
         return new Promise (function(resolve, reject){
-            pool.query('INSERT INTO book (authors, title, description,year, category, pictureUrl, price, shops) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *', [authors, title, description,year, category, pictureUrl,price, shops], (error, results) => {
+            pool.query('INSERT INTO book (authors, title, description,year, category, pictureUrl, price) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *', [authors, title, description,year, category, pictureUrl,price, shops], (error, results) => {
                 if (error) {
                     reject(error)
                   }
