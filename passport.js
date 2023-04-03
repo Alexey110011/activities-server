@@ -7,6 +7,7 @@ const pool = new Pool({
     rejectUnauthorized:false
   }
 })
+
 const authMethods = require('./authentication')
 const emailExists = (username)=>{
     return new Promise (function(resolve, reject){
