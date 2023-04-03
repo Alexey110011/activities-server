@@ -24,7 +24,7 @@ const addReviewToBook = (req) =>{
     let author="1"
     const {rating, reviewtext/*, createdOn*/} = req.body
     return new Promise (function(resolve, reject){
-    pool.query('INSERT INTO reviews (bookid, author, rating, reviewtext) VALUES ($1, $2, $3, $4) RETURNING *', [bookid, author, rating, reviewtext], (error, results) => {
+    pool.query('INSERT INTO revuews (bookid, author, rating, reviewtext) VALUES ($1, $2, $3, $4) RETURNING *', [bookid, author, rating, reviewtext], (error, results) => {
         if (error) {
             reject(error)
           }
@@ -88,7 +88,7 @@ const addReviewToBook = (req) =>{
     const getReviewsForBooks = ()=>{
         return new Promise(function(resolve, reject){
             pool.query(
-                `SELECT * FROM reviews ORDER BY _id ASC`, (error, results)=>{
+                `SELECT * FROM revuiews ORDER BY _id ASC`, (error, results)=>{
                     if(error) {reject(error)};
                     resolve(results.rows)
                 })
