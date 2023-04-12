@@ -21,8 +21,8 @@ const pool = new Pool({
   }
 })
 //pool.connect()
-//const cors = require('cors')
-//app.use(cors())
+const cors = require('cors')
+app.use(cors())
 //************************************************************************************************************* */
 /*const {expressjwt:jwt} = require('express-jwt')---Using express-jwt package
   let auth = jwt({
