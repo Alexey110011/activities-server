@@ -9,7 +9,7 @@ const model = require('./model')
 require('./passport')
 const authMethods = require('./authentication')
 const passport = require('passport')
-const jwt = require('jsonwebtoken') // Using jsonwebtoken package
+const jwt = require('jsonwebtoken')  //if using jsonwebtoken package
 
 
 const Pool = require('pg').Pool
@@ -20,22 +20,23 @@ const pool = new Pool({
     rejectUnauthorized:false
   }
 })
-pool.connect()
-const cors = require('cors')
-app.use(cors())
+//pool.connect()
+//const cors = require('cors')
+//app.use(cors())
+//************************************************************************************************************* */
 /*const {expressjwt:jwt} = require('express-jwt')---Using express-jwt package
   let auth = jwt({
   secret:process.env.JWT_SECRET,
   userProperty:'payload',
   algorithms:['HS256']
 })*/
+//************************************************************************************************************* */
 app.use(function (req, res, next) {
-  /*const allowedOrigin = ["https://sparkling-malasada-6c08c8.netlify.app", "https://gentle-semifreddo-803079.netlify.app"]
+  const allowedOrigin = ["https://sparkling-malasada-6c08c8.netlify.app", "https://gentle-semifreddo-803079.netlify.app"]
   const origin = req.headers.origin
   if(allowedOrigin.includes(origin)){
     res.setHeader('Access-Control-Allow-Origin', origin)
-  }*/
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  }
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type', 'Access-Control-Allow-Headers,,Authorization');
   next();});
@@ -129,10 +130,10 @@ app.post('/booksFromDb1', (req, res)=>{
     })})
        
   app.post('/products/:bookId/addReview',auth,(req, res)=>{
-    model.addReviewToDb(req/*,res*/)
+    model.addReviewToDb(req)
     .then(response => {
       reviews.push(response)
-      res.status(200).send(response/*reviews*/);
+      res.status(200).send(response);
       console.log(1000,response.rows)
     })
     .catch(error => {
@@ -142,7 +143,7 @@ app.post('/booksFromDb1', (req, res)=>{
   })
 
   app.put('/products/:bookId/addReview/updateRating',(req, res)=>{
-    model.updateRating(req/*, res*/)
+    model.updateRating(req)
     .then(response=>{
       res.status(200).send(response)
       console.log(5,response)

@@ -123,18 +123,6 @@ const getUserByEmail = (req)=>{
     })
 }
 
-/*const checkUserName= (req)=>{
-    console.log(req)
-    const name = req.name
-    return new Promise(function (resolve, reject){
-        pool.query(
-            `SELECT * FROM users WHERE name = $1`,[name],(error, results)=>{
-            if(error){reject(error)
-            }
-            resolve (results.rows)
-        })
-    })
-}*/
 const getRegExpName = async (req)=>{
     console.log(100,req.body)
     const reg = req.body.reg
@@ -172,7 +160,6 @@ const getRegExpEmail = async (req)=>{
         generateJWT,
         getUserByName,
         getUserByEmail,
-        //checkUserName, 
         getRegExpName,
         getRegExpEmail
     }
