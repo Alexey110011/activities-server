@@ -74,7 +74,7 @@ const addReviewToBook = (req) =>{
         const newRating = req.body.rating
         console.log(150, req.body)
         return new Promise(function(resolve, reject){
-            pool.query('UPDATE book SET rating = $2 WHERE _id = $1',[bookid, newRating], (error, results)=>{
+            pool.query('UPDATE book SET rating = $2 WHERE _id = $1 RETURNING *',[bookid, newRating], (error, results)=>{
             if(error){
                 reject (error)
                 console.log(req.body)
