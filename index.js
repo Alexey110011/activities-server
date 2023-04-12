@@ -39,7 +39,7 @@ app.use(function (req, res, next) {
   }*/
   res.setHeader("Access-Control-Allow-Origin", "*")
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type', 'Access-Control-Allow-Headers,,Authorization');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type', 'Access-Control-Allow-Headers,Authorization');
   next();});
 //******************************************Books server**************************************************** */
 app.use(passport.initialize())
