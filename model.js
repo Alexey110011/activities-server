@@ -77,7 +77,7 @@ const addReviewToBook = (req) =>{
             pool.query('UPDATE book SET rating = $2 WHERE _id = $1',[bookid, newRating], (error, results)=>{
             if(error){
                 reject (error)
-                console.log(body.body)
+                console.log(req.body)
             }
             resolve(results.rows)
             console.log('Success', results.rows)
