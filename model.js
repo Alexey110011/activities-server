@@ -41,7 +41,8 @@ const addReviewToDb = (req)=>{
     }
     const bookid = req.params.bookId
     const {rating, reviewtext} = req.body
-    const createdon = new Date().toLocaleDateString()
+    const createdon1 = new Date()
+    const createdon = createdon1.toLocaleDateString()
     console.log(100000,req.body)
         
     return new Promise (function(resolve, reject){

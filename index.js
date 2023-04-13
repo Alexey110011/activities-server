@@ -1,11 +1,12 @@
 require('dotenv').config()
 const express = require('express'); 
 const bodyParser = require('body-parser')
+const model = require('./model')
+const merchant_model = require('./contragent_model.js')
 const app = express();
 const port = process.env.PORT || 4000; 
-const merchant_model = require('./contragent_model.js')
+
 //*****************************Books server//*********************************** */
-const model = require('./model')
 require('./passport')
 const authMethods = require('./authentication')
 const passport = require('passport')
@@ -31,18 +32,8 @@ app.use(cors())
   algorithms:['HS256']
 })*/
 //************************************************************************************************************* */
-app.use(function (req, res, next) {
-  /*const allowedOrigin = ["https://sparkling-malasada-6c08c8.netlify.app", "https://gentle-semifreddo-803079.netlify.app"]
-  const origin = req.headers.origin
-  if(allowedOrigin.includes(origin)){
-    res.setHeader('Access-Control-Allow-Origin', origin)
-  }*/
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type', 'Access-Control-Allow-Headers','Authorization');
-  next();});
+
 //******************************************Books server**************************************************** */
-app.use(passport.initialize())
 
 let auth = (req, res, next)=>{
   try{
@@ -70,11 +61,21 @@ app.use(function(err, req, res,next){
     res.json({"message":err.name + ":" + err.message})
 }
 })
+app.use(function (req, res, next) {
+  /*const allowedOrigin = ["https://sparkling-malasada-6c08c8.netlify.app", "https://gentle-semifreddo-803079.netlify.app"]
+  const origin = req.headers.origin
+  if(allowedOrigin.includes(origin)){
+    res.setHeader('Access-Control-Allow-Origin', origin)
+  }*/
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type', 'Access-Control-Allow-Headers','Authorization');
+  next();});
 //******************************************************************************* */
 app.use(express.json())
 app.use (bodyParser.urlencoded({extended:false}))
 app.use( bodyParser.json())
-
+app.use(passport.initialize())
 
   let books=[];
   let reviews=[];
