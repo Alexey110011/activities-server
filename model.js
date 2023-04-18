@@ -77,7 +77,7 @@ const addReviewToDb = (req)=>{
     const getReviewsForBooks = ()=>{
         return new Promise(function(resolve, reject){
             pool.query(
-                `SELECT * FROM reviews ORDER BY createdon ASC`, (error, results)=>{
+                `SELECT * FROM reviews ORDER BY createdon DESC`, (error, results)=>{
                     if(error) {reject(error)};
                     resolve(results.rows)
                 })
