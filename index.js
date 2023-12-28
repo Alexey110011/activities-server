@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const model = require('./model')
 const merchant_model = require('./contragent_model.js')
+const tests_model = require('./tests_model')
 const app = express();
 const port = process.env.PORT || 4000; 
 
@@ -62,7 +63,7 @@ app.use(function(err, req, res,next){
 }
 })
 app.use(function (req, res, next) {
-  const allowedOrigin = ["https://sparkling-malasada-6c08c8.netlify.app", "https://gentle-semifreddo-803079.netlify.app"]
+  const allowedOrigin = ["https://sparkling-malasada-6c08c8.netlify.app", "https://gentle-semifreddo-803079.netlify.app","https://beamish-treacle-2d1dc7.netlify.app"]
   const origin = req.headers.origin
   if(allowedOrigin.includes(origin)){
     res.setHeader('Access-Control-Allow-Origin', origin)
@@ -240,5 +241,73 @@ app.get('/cleardb', (req,res)=>{
     .catch(error => {
       res.status(500).send(error);
     })})
+//************************************************************************************************************************ 
+app.get('/getTests',(req, res)=>{
+  console.log(JSONquestions,JSONanswers)
+  res.send({questions:JSONquestions, answers:JSONanswers})
+})
 
+app.post('/post',(req, res)=>{
+    console.log(req.body.answer)
+    tests_model.passTest(req,res)
+    .then(response => {
+      console.log(response.rows);res.status(200).send(response);
+    })
+    .catch(error => {
+      res.status(500).send(error);
+    })
+ })
+
+app.post('/postFromLocalStorage',(req, res)=>{
+  console.log(req.body.answer)
+  test_model.passTestFromLocalStorage(req,res)
+  .then(response => {
+    console.log(response.rows);res.status(200).send(response);
+  })
+  .catch(error => {
+    ress.status(500).send(error);
+  })
+})
+
+app.post('/isTestPassed', (req, res)=>{
+  models.passedTest(req, res)
+  .then(response=>{
+    res.status(200).send(response);console.log('If test Passed',response)})
+    .catch(error=>{
+      res.status(500).send(error)
+      console.log(error)})
+})
+
+app.post('/register', (req, res)=>{
+    models.register (req, res)
+  .then(response => {
+    res.status(200).send(response);
+    console.log(response)
+  })
+  .catch(error => {
+    console.log(error)
+  })
+})
+
+app.post('/login', (req, res)=>{
+  console.log(2,req.body)
+    models.login(req,res)
+})
+
+app.post('/ch',(req, res)=>{
+  console.log(130,req.body)
+  models.checkUserByNameSurname(req, res)
+  .then (response=>{res.send(response);console.log(response)})
+  .catch(err=>console.log(err))
+})
+
+app.post('/checkRegExpEmail', (req, res)=>{
+  models.checkRegExpEmail(req)
+  .then(response=>{res.send(response);console.log(response)})
+})
+
+app.post('/checkuser', (req, res)=>{
+  console.log(req.body)
+  res.send(req.body)
+})
 app.listen(process.env.PORT||port, () => console.log(`Listening on port ${port}`)); 
