@@ -6,7 +6,8 @@ const merchant_model = require('./contragent_model.js')
 const tests_model = require('./tests_model')
 const app = express();
 const port = process.env.PORT || 4000; 
-
+const JSONquestions = require('./questions/questions.json')
+const JSONanswers = require('./answers/answers.json')
 //*****************************Books server//*********************************** */
 require('./passport')
 const authMethods = require('./authentication')
