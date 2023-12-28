@@ -261,7 +261,7 @@ app.post('/post',(req, res)=>{
 
 app.post('/postFromLocalStorage',(req, res)=>{
   console.log(req.body.answer)
-  test_model.passTestFromLocalStorage(req,res)
+  tests_model.passTestFromLocalStorage(req,res)
   .then(response => {
     console.log(response.rows);res.status(200).send(response);
   })
@@ -271,7 +271,7 @@ app.post('/postFromLocalStorage',(req, res)=>{
 })
 
 app.post('/isTestPassed', (req, res)=>{
-  models.passedTest(req, res)
+  tests_model.passedTest(req, res)
   .then(response=>{
     res.status(200).send(response);console.log('If test Passed',response)})
     .catch(error=>{
@@ -280,7 +280,7 @@ app.post('/isTestPassed', (req, res)=>{
 })
 
 app.post('/register', (req, res)=>{
-    models.register (req, res)
+    tests_model.register (req, res)
   .then(response => {
     res.status(200).send(response);
     console.log(response)
@@ -292,18 +292,18 @@ app.post('/register', (req, res)=>{
 
 app.post('/login', (req, res)=>{
   console.log(2,req.body)
-    models.login(req,res)
+    tests_model.login(req,res)
 })
 
 app.post('/ch',(req, res)=>{
   console.log(130,req.body)
-  models.checkUserByNameSurname(req, res)
+  tests_model.checkUserByNameSurname(req, res)
   .then (response=>{res.send(response);console.log(response)})
   .catch(err=>console.log(err))
 })
 
 app.post('/checkRegExpEmail', (req, res)=>{
-  models.checkRegExpEmail(req)
+  tests_model.checkRegExpEmail(req)
   .then(response=>{res.send(response);console.log(response)})
 })
 
