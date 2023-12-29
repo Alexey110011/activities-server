@@ -151,7 +151,7 @@ const getRegExpEmail = async (req)=>{
             })
     })
 }
-    
+
     module.exports = {
         setPassword,
         register,

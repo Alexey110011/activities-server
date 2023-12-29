@@ -120,6 +120,7 @@ const register = function(req,res) {
             })
     })
   }
+  
 const passedTest = (req, res)=>{
     console.log(150,req.body)
   const {email, tests} = req.body

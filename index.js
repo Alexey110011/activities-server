@@ -73,6 +73,7 @@ app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type', 'Access-Control-Allow-Headers','Authorization');
   next();});
 //******************************************************************************* */
+//Code below is REST for project "Angular _Books"
 app.use(express.json())
 app.use (bodyParser.urlencoded({extended:false}))
 app.use( bodyParser.json())
@@ -243,12 +244,13 @@ app.get('/cleardb', (req,res)=>{
       res.status(500).send(error);
     })})
 //************************************************************************************************************************ 
+//Code below is REST for project "Tests_devs"
 app.get('/getTests',(req, res)=>{
   console.log(JSONquestions,JSONanswers)
   res.send({questions:JSONquestions, answers:JSONanswers})
 })
 
-app.post('/post',(req, res)=>{
+app.post('/postTest',(req, res)=>{
     console.log(req.body.answer)
     tests_model.passTest(req,res)
     .then(response => {
@@ -259,7 +261,7 @@ app.post('/post',(req, res)=>{
     })
  })
 
-app.post('/postFromLocalStorage',(req, res)=>{
+app.post('/postTestFromLocalStorage',(req, res)=>{
   console.log(req.body.answer)
   tests_model.passTestFromLocalStorage(req,res)
   .then(response => {
@@ -279,7 +281,7 @@ app.post('/isTestPassed', (req, res)=>{
       console.log(error)})
 })
 
-app.post('/register', (req, res)=>{
+app.post('/registerStudent', (req, res)=>{
     tests_model.register (req, res)
   .then(response => {
     res.status(200).send(response);
@@ -290,7 +292,7 @@ app.post('/register', (req, res)=>{
   })
 })
 
-app.post('/login', (req, res)=>{
+app.post('/loginStudent', (req, res)=>{
   console.log(2,req.body)
     tests_model.login(req,res)
 })
@@ -302,7 +304,7 @@ app.post('/ch',(req, res)=>{
   .catch(err=>console.log(err))
 })
 
-app.post('/checkRegExpEmail', (req, res)=>{
+app.post('/checkStudentEmail', (req, res)=>{
   tests_model.checkRegExpEmail(req)
   .then(response=>{res.send(response);console.log(response)})
 })
@@ -311,4 +313,5 @@ app.post('/checkuser', (req, res)=>{
   console.log(req.body)
   res.send(req.body)
 })
+
 app.listen(process.env.PORT||port, () => console.log(`Listening on port ${port}`)); 
